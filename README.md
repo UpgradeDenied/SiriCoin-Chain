@@ -9,7 +9,7 @@ SiriCoin mainnet is the backbone of SiriCoin network, which actually does many s
 # Installation and Hosting
 If you have planned to host a mainnet to support SiriCoin, Thats Great!! follow the guide to host it
 
-**NOTE THAT YOU WILL NEED A STRONG/POWERFUL VPS TO HOST THE MAINNET AS IT SYNCS TO THE NETWORK AND SENDS/RECIEVES DATA ALL THE TIME THERE MIGHT BE EXTRA LOAD IF YOU USE LOW END VPS.*
+**NOTE THAT YOU WILL NEED A STRONG/POWERFUL VPS TO HOST THE MAINNET AS IT SYNCS TO THE NETWORK AND SENDS/RECIEVES DATA ALL THE TIME THERE MIGHT BE EXTRA LOAD IF YOU USE LOW END VPS.
 
 Step 1 -- Update and upgrade your VPS and install git. Follow the below command to do it.
 
@@ -35,4 +35,4 @@ Step 5 -- Finally Run the mainnet file.
 
 ``python3 mainnet-main.py``
 
-**Note that your Python version needs to be atleast 3.9 in order to the mainnet to work. also the mainnet once running will automatically sync to the network by itself*
+**Note that your Python version needs to be atleast 3.9 in order to the mainnet to work. also the mainnet once running will automatically sync to the network by itself.
