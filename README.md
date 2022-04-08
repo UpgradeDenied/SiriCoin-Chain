@@ -36,3 +36,6 @@ Step 5 -- Finally Run the mainnet file.
 ``python3 mainnet-main.py``
 
 * Note that your Python version needs to be atleast 3.9 in order to the mainnet to work. also the mainnet once running will automatically sync to the network by itself.
+
+# RPC Documentation
+You can view the RPC Documentation [Here](https://docs.siricoin.tech/rpc-documentation).
