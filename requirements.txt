@@ -1,6 +1,6 @@
 flask
 web3
-json
+jsons
 eth_account
 flask_cors
 dataclasses
