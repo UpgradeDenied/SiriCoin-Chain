@@ -792,7 +792,7 @@ CORS(app)
 
 @app.route("/")
 def basicInfoHttp():
-    return "SiriCoin cryptocurrency node running on port 5005"
+    return "SiriCoin cryptocurrency mainnet running on port 5005"
 
 @app.route("/ping")
 def getping():
