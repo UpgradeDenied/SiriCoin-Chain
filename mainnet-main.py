@@ -268,7 +268,7 @@ class BeaconChain(object):
         self.miningTarget = hex(int(min(int((2**256-1)/self.difficulty),0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)))
         return True
     
-    def submitBlock(self, block):
+    def submitBlock(self, block, showMessage):
         # print(block)
         try:
             _beacon = Beacon(block, self.difficulty)
@@ -279,6 +279,8 @@ class BeaconChain(object):
         # print(beaconValidity)
         if beaconValidity[0]:
             self.addBeaconToChain(_beacon)
+            if showMessage:
+                print(f"Block mined !\nHeight : {_beacon.number}\nMiner : {_beacon.miner}\nReward : {self.blockReward} SiriCoins")
             return _beacon.miner
         return False
     
@@ -445,16 +447,18 @@ class State(object):
     def postMessage(self, msg, showMessage):
         pass # still under development
 
-    def mineBlock(self, tx):
+    def mineBlock(self, tx, showMessage):
         try:
             self.ensureExistence(tx.sender)
-            feedback = self.beaconChain.submitBlock(tx.blockData);
+            feedback = self.beaconChain.submitBlock(tx.blockData, showMessage);
             self.applyParentStuff(tx)
             # print(feedback)
             if feedback:
 #                self.ensureExistence(feedback)
                 self.balances[feedback] += self.beaconChain.blockReward
                 self.totalSupply += self.beaconChain.blockReward
+                # if showMessage:
+                    # print(f"Block mined !\nMiner : {feedback}\nReward : {self.beaconChain.blockReward} SiriCoins")
                 return True
             return False
         except:
@@ -467,7 +471,7 @@ class State(object):
         if _tx.txtype == 0:
             feedback = self.executeTransfer(_tx, showMessage)
         if _tx.txtype == 1:
-            feedback = self.mineBlock(_tx)
+            feedback = self.mineBlock(_tx, showMessage)
         if _tx.txtype == 2:
             feedback = self.executeTransfer(_tx, showMessage)
         
