@@ -15,7 +15,7 @@ try:
     config = json.load(configFile)
     configFile.close()
 except:
-    config = {"dataBaseFile": "testmycrypto-IHopeITllfixthistime.json", "nodePrivKey": "20735cc14fd4a86a2516d12d880b3fa27f183a381c5c167f6ff009554c1edc69", "peers":["https://siricoin-node-1.dynamic-dns.net:5005/"], "InitTxID": "none"}
+    config = {"dataBaseFile": "testmycrypto-IHopeITllfixthistime.json", "nodePrivKey": "278923f900f2d00d1bfebb128211af82cbc3644e478dc3bfe9f3337bbbc27e02", "peers":["http://138.197.181.206:5005"], "InitTxID": "none"}
 
 try:
     ssl_context = tuple(config["ssl"])
