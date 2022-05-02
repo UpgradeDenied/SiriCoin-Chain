@@ -918,6 +918,32 @@ def sendRawTransactions():
     node.checkTxs(txs)
     return flask.jsonify(result=hashes, success=True)
 
+@app.route("/send/unsignrawtransaction/") # allows sending a raw (signed) transaction
+def sendUnsignRawTransactions():
+    rawtx = str(flask.request.args.get('tx', None))
+    blockData = json.loads(bytes.fromhex(rawtx).decode())
+    if (type(blockData["miningData"]) == dict):   
+        blockData["miningData"] = json.loads(json.dumps(blockData["miningData"]).replace(" ", ""))
+    info = blockData.get("miningData")
+    local_rewardsRecipient = info["miner"]      
+    local_priv_key = w3.solidityKeccak(["string", "address"], ["SiriCoin Will go to MOON - Just a disposable key", local_rewardsRecipient])
+    local_acct = w3.eth.account.from_key(local_priv_key)
+    _address = w3.toChecksumAddress(local_acct.address)
+    transactions = node.state.transactions.get(_address)
+    local_lastSentTx = transactions[len(transactions)-1]
+    local_lastBlock = node.state.beaconChain.getLastBeacon().proof
+    data = json.dumps({"from": local_acct.address, "to": local_acct.address, "tokens": 0, "parent": local_lastSentTx, "blockData": blockData, "epoch": local_lastBlock, "type": 1})
+    tx = {"data": data}
+    print(tx)
+    sign = SignatureManager()
+    tx = sign.signTransaction(local_priv_key, tx)
+    txs = []
+    hashes = []
+    txs.append(tx)
+    hashes.append(tx["hash"])    
+    node.checkTxs(txs)
+    return flask.jsonify(result=hashes, success=True)
+
 @app.route("/send/buildtransaction/")
 def buildTransactionAndSend():
     privkey = str(flask.request.args.get('privkey', None))
