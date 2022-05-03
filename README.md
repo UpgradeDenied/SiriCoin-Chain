@@ -17,7 +17,7 @@ Step 1 -- Update and upgrade your VPS and install git. Follow the below command 
 
 Step 2 -- You will have to clone this repository in order to download the code in your VPS then cd into the directory. Run the below command to clone it.
 
-``git clone https://github.com/Shreyas-ITB/SiriCoin-Mainnet/``
+``git clone https://github.com/siricoin-project/SiriCoin-Chain.git``
 
 ``cd SiriCoin-Mainnet``
 
