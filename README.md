@@ -3,7 +3,7 @@
 
 
 # Mainnet
-SiriCoin mainnet is the backbone of SiriCoin network, which actually does many stuffs like getting the transaction, giving and accepting jobs from miners, providing informations to the explorer, works as a mainnet for the metamask (siricoin wallet). This was made by [Yanis](https://github.com/ygboucherk) but since he is so busy in his life his repository wasnt maintained. Now the mainnet is maintained by me but he still has access to this repository.
+
 
 
 # Installation and Hosting
